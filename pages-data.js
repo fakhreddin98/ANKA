@@ -84,9 +84,10 @@ export const DEFAULT_PAGES = [
               imageUrl: "AZ-LOGO_POS.png",
             },
             {
-              title: "Duckling",
-              body: "Konsultnatverk och tekniknara samarbete.",
-              href: "https://duckling.se/",
+              title: "Hogskolan i Boras",
+              body: "Akademisk partner med koppling till teknik, utveckling och kompetensforsorjning.",
+              href: "https://www.hb.se/",
+              imageUrl: "hb_logo.png",
             },
             {
               title: "ESSIQ",
@@ -251,9 +252,10 @@ export const DEFAULT_PAGES = [
               imageUrl: "AZ-LOGO_POS.png",
             },
             {
-              title: "Duckling",
-              body: "Konsultfokuserad aktor i samma marknad.",
-              href: "https://duckling.se/",
+              title: "Hogskolan i Boras",
+              body: "Akademisk partner i samma innovations- och kompetensekosystem.",
+              href: "https://www.hb.se/",
+              imageUrl: "hb_logo.png",
             },
             {
               title: "ESSIQ",
