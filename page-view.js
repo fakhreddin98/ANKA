@@ -10,7 +10,7 @@ import {
   PAGE_FILE_MAP,
   findDefaultPage,
   mergeWithDefaultPages,
-} from "./pages-data.js";
+} from "./pages-data-clean.js";
 
 const body = document.body;
 const currentSlug = body.dataset.pageSlug;
@@ -18,6 +18,15 @@ const pageTitle = document.querySelector("#page-title");
 const pageBlocks = document.querySelector("#page-blocks");
 const navRoot = document.querySelector("#site-nav");
 const metaDescription = document.querySelector('meta[name="description"]');
+
+const mapPageFromDb = (page) => ({
+  slug: page.slug,
+  title: page.title,
+  navLabel: page.navLabel ?? page.nav_label ?? "",
+  metaDescription: page.metaDescription ?? page.meta_description ?? "",
+  published: Boolean(page.published),
+  blocks: Array.isArray(page.blocks) ? page.blocks : [],
+});
 
 const buildNav = (pages) => {
   navRoot.innerHTML = "";
@@ -481,7 +490,9 @@ const loadPages = async () => {
     .eq("published", true)
     .order("slug");
 
-  const pages = data?.length ? mergeWithDefaultPages(data) : DEFAULT_PAGES;
+  const pages = data?.length
+    ? mergeWithDefaultPages(data.map(mapPageFromDb))
+    : DEFAULT_PAGES;
   buildNav(pages);
 
   const page =

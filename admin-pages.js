@@ -4,7 +4,7 @@ import {
   PAGE_FILE_MAP,
   findDefaultPage,
   mergeWithDefaultPages,
-} from "./pages-data.js";
+} from "./pages-data-clean.js";
 
 const logoutButton = document.querySelector("#logout-button");
 const pageList = document.querySelector("#page-list");
@@ -30,6 +30,24 @@ const setStatus = (message, tone = "") => {
 };
 
 const clonePage = (page) => JSON.parse(JSON.stringify(page));
+
+const mapPageFromDb = (page) => ({
+  slug: page.slug,
+  title: page.title,
+  navLabel: page.navLabel ?? page.nav_label ?? "",
+  metaDescription: page.metaDescription ?? page.meta_description ?? "",
+  published: Boolean(page.published),
+  blocks: Array.isArray(page.blocks) ? page.blocks : [],
+});
+
+const mapPageToDb = (page) => ({
+  slug: page.slug,
+  title: page.title,
+  nav_label: page.navLabel,
+  meta_description: page.metaDescription,
+  published: Boolean(page.published),
+  blocks: page.blocks,
+});
 
 const blockItemsToText = (items = []) =>
   items
@@ -226,7 +244,7 @@ const saveCurrentPage = async () => {
   updateCurrentPageMeta();
   setStatus("Sparar sidan...", "loading");
 
-  const { error } = await supabase.from("site_pages").upsert(currentPage);
+  const { error } = await supabase.from("site_pages").upsert(mapPageToDb(currentPage));
 
   if (error) {
     setStatus("Det gick inte att spara sidan.", "error");
@@ -241,7 +259,7 @@ const saveCurrentPage = async () => {
 
 const loadPages = async () => {
   const { data } = await supabase.from("site_pages").select("*").order("slug");
-  pages = mergeWithDefaultPages(data || []);
+  pages = mergeWithDefaultPages((data || []).map(mapPageFromDb));
   renderPageList();
   currentPage = clonePage(pages[0] ?? findDefaultPage("services"));
   renderEditor();
