@@ -121,6 +121,30 @@ dl {
   color: var(--muted);
 }
 
+.nav a {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  min-height: 36px;
+  padding: 0 2px;
+  font-weight: 500;
+  transition: color 160ms ease;
+}
+
+.nav a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -6px;
+  height: 2px;
+  border-radius: 999px;
+  background: var(--accent);
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform 160ms ease;
+}
+
 .nav a:hover,
 .nav a:focus-visible,
 .text-link:hover,
@@ -130,6 +154,10 @@ dl {
 
 .nav a.is-active {
   color: var(--text);
+}
+
+.nav a.is-active::after {
+  transform: scaleX(1);
 }
 
 .button {
@@ -155,6 +183,14 @@ dl {
 .button:focus-visible {
   transform: translateY(-1px);
   box-shadow: 0 10px 24px rgba(34, 71, 58, 0.18);
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+  outline: 3px solid color-mix(in srgb, var(--accent) 58%, white);
+  outline-offset: 2px;
 }
 
 .button-secondary {
@@ -188,6 +224,9 @@ dl {
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow);
   animation: rise-in 700ms ease both;
+  transition:
+    transform 180ms ease,
+    box-shadow 180ms ease;
 }
 
 .hero-copy {
@@ -1018,6 +1057,14 @@ body {
   border-color: rgba(23, 49, 59, 0.1);
 }
 
+.capability-card:hover,
+.job-card:hover,
+.logo-card:hover,
+.partner-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 28px 70px rgba(32, 54, 62, 0.16);
+}
+
 .capability-card h3,
 .jobs-placeholder h3,
 .partner-card h3,
@@ -1218,6 +1265,14 @@ body {
   .nav {
     justify-content: flex-start;
     width: 100%;
+    overflow-x: auto;
+    flex-wrap: nowrap;
+    scrollbar-width: thin;
+    padding-bottom: 2px;
+  }
+
+  .nav a {
+    white-space: nowrap;
   }
 
   .hero-copy,
