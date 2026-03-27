@@ -5,6 +5,9 @@ const config = window.ANKA_CONFIG ?? {};
 export const adminEmail = config.adminEmail ?? "fakher.abewe@gmail.com";
 export const formSubmitEndpoint =
   config.formSubmitEndpoint ?? `https://formsubmit.co/${adminEmail}`;
+export const formSubmitAjaxEndpoint = formSubmitEndpoint.includes("/ajax/")
+  ? formSubmitEndpoint
+  : formSubmitEndpoint.replace("https://formsubmit.co/", "https://formsubmit.co/ajax/");
 export const storageBucket = config.storageBucket ?? "intake-files";
 export const hasSupabaseConfig = Boolean(
   config.supabaseUrl && config.supabaseAnonKey
