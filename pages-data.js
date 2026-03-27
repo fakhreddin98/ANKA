@@ -51,6 +51,54 @@ export const DEFAULT_PAGES = [
         },
       },
       {
+        id: "home-logos",
+        type: "cards",
+        data: {
+          variant: "logos",
+          eyebrow: "Natverk och referensmiljoer",
+          title: "Bolag och miljoer ANKA vill kunna arbeta nara.",
+          body: "Logovaggen visar den typ av aktorer, testmiljoer och tekniknara sammanhang som sidan ska tala till.",
+          items: [
+            {
+              title: "AB Dynamics",
+              body: "Driving robots, ADAS targets och testplattformar.",
+              href: "https://www.abdynamics.com/",
+              imageUrl: "https://www.abdynamics.com/favicon.ico",
+            },
+            {
+              title: "OXTS",
+              body: "GNSS/INS, lokalisation och precisionsmatning.",
+              href: "https://www.oxts.com/",
+              imageUrl: "https://www.oxts.com/favicon.ico",
+            },
+            {
+              title: "RISE",
+              body: "Forskningsnara test- och innovationsmiljoer.",
+              href: "https://www.ri.se/",
+              imageUrl: "https://www.ri.se/favicon.ico",
+            },
+            {
+              title: "AstaZero",
+              body: "Testmiljo for aktiv sakerhet, ADAS och automatiserade fordon.",
+              href: "https://www.astazero.com/",
+              imageUrl: "https://www.astazero.com/favicon.ico",
+            },
+            {
+              title: "Duckling",
+              body: "Konsultnatverk och tekniknara samarbete.",
+              href: "https://duckling.se/",
+              imageUrl: "https://duckling.se/favicon.ico",
+            },
+            {
+              title: "ESSIQ",
+              body: "Problemlosare inom produktutveckling och teknik.",
+              href: "https://essiq.se/",
+              imageUrl: "https://essiq.se/favicon.ico",
+            },
+          ],
+        },
+      },
+      {
         id: "home-cta",
         type: "cta",
         data: {
@@ -170,7 +218,55 @@ export const DEFAULT_PAGES = [
           ],
         },
       },
-    ],
+      {
+        id: "partners-logos",
+        type: "cards",
+        data: {
+          variant: "logos",
+          eyebrow: "Aktorer och miljoer",
+          title: "Relevanta namn i samma tekniska ekosystem.",
+          body: "Ut over partnerlosningar kan sidan ocksa visa var ANKA ror sig: forskning, testanlaggningar, konsultnatverk och engineeringbolag.",
+          items: [
+            {
+              title: "AB Dynamics",
+              body: "Partner inom test och verifiering.",
+              href: "https://www.abdynamics.com/",
+              imageUrl: "https://www.abdynamics.com/favicon.ico",
+            },
+            {
+              title: "OXTS",
+              body: "Partner inom positionering och matdata.",
+              href: "https://www.oxts.com/",
+              imageUrl: "https://www.oxts.com/favicon.ico",
+            },
+            {
+              title: "RISE",
+              body: "Forskningsinstitut och testnara samarbetsyta.",
+              href: "https://www.ri.se/",
+              imageUrl: "https://www.ri.se/favicon.ico",
+            },
+            {
+              title: "AstaZero",
+              body: "Provning inom aktiv sakerhet och automatiserade fordon.",
+              href: "https://www.astazero.com/",
+              imageUrl: "https://www.astazero.com/favicon.ico",
+            },
+            {
+              title: "Duckling",
+              body: "Konsultfokuserad aktor i samma marknad.",
+              href: "https://duckling.se/",
+              imageUrl: "https://duckling.se/favicon.ico",
+            },
+            {
+              title: "ESSIQ",
+              body: "Engineeringprofil inom produktutveckling och problemlosning.",
+              href: "https://essiq.se/",
+              imageUrl: "https://essiq.se/favicon.ico",
+            },
+          ],
+        },
+      },
+  ],
   },
   {
     slug: "jobs",

@@ -25,6 +25,7 @@ const partnersSection = document.querySelector("#partners");
 const jobsSection = document.querySelector("#uppdrag");
 const contactSection = document.querySelector("#kontakt");
 const managedSections = document.querySelector("#managed-sections");
+
 const roleContent = {
   Uppdragstagare: {
     hint: "Skicka in CV, kontaktuppgifter och en kort presentation av din erfarenhet.",

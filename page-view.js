@@ -175,18 +175,60 @@ const renderCardsBlock = (block) => {
   }
 
   const grid = document.createElement("div");
-  grid.className = "capability-grid";
+  const isLogoVariant = block.data.variant === "logos";
+  grid.className = isLogoVariant ? "logo-wall" : "capability-grid";
 
   (block.data.items || []).forEach((item, index) => {
     const normalizedItem =
       typeof item === "string" ? { title: item, body: "" } : item;
-    const card = document.createElement("article");
-    card.className = "capability-card";
-    card.innerHTML = `
-      <span class="card-index">${String(index + 1).padStart(2, "0")}</span>
-      <h3>${normalizedItem.title || ""}</h3>
-      <p>${normalizedItem.body || ""}</p>
-    `;
+    const cardTag = normalizedItem.href ? "a" : "article";
+    const card = document.createElement(cardTag);
+    card.className = isLogoVariant ? "logo-card" : "capability-card";
+
+    if (normalizedItem.href) {
+      card.href = normalizedItem.href;
+      card.target = "_blank";
+      card.rel = "noreferrer";
+    }
+
+    if (isLogoVariant) {
+      const mark = document.createElement("div");
+      mark.className = "logo-mark";
+
+      const fallback = document.createElement("span");
+      fallback.className = "logo-fallback";
+      fallback.textContent = normalizedItem.title || "";
+      mark.appendChild(fallback);
+
+      if (normalizedItem.imageUrl) {
+        const image = document.createElement("img");
+        image.src = normalizedItem.imageUrl;
+        image.alt = normalizedItem.title || "Logo";
+        image.addEventListener("load", () => {
+          fallback.hidden = true;
+        });
+        image.addEventListener("error", () => {
+          image.remove();
+          fallback.hidden = false;
+        });
+        mark.appendChild(image);
+      }
+
+      const title = document.createElement("h3");
+      title.textContent = normalizedItem.title || "";
+
+      const body = document.createElement("p");
+      body.textContent = normalizedItem.body || "";
+
+      card.append(mark, title, body);
+    } else {
+      card.innerHTML = `
+        <span class="card-index">${String(index + 1).padStart(2, "0")}</span>
+        <h3>${normalizedItem.title || ""}</h3>
+        <p>${normalizedItem.body || ""}</p>
+      `;
+    }
+
     grid.appendChild(card);
   });
 
