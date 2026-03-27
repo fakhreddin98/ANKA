@@ -1,4 +1,6 @@
 import {
+  adminEmail,
+  formSubmitAjaxEndpoint,
   formSubmitEndpoint,
   hasSupabaseConfig,
   storageBucket,
@@ -244,14 +246,32 @@ const applySiteContent = (content) => {
 };
 
 const notifyByEmail = async (formData) => {
-  try {
-    await fetch(formSubmitEndpoint, {
-      method: "POST",
-      mode: "no-cors",
-      body: formData,
-    });
-  } catch (error) {
-    console.error("Email notification failed", error);
+  formData.set("_subject", "Ny kontakt fran ANKA Consulting AB");
+  formData.set("_template", "table");
+  formData.set("_captcha", "false");
+
+  const senderEmail = formData.get("Email");
+
+  if (senderEmail) {
+    formData.set("_replyto", senderEmail);
+  }
+
+  const response = await fetch(formSubmitAjaxEndpoint, {
+    method: "POST",
+    headers: {
+      Accept: "application/json",
+    },
+    body: formData,
+  });
+
+  if (!response.ok) {
+    throw new Error(`Email request failed with status ${response.status}`);
+  }
+
+  const payload = await response.json();
+
+  if (payload.success !== true && payload.success !== "true") {
+    throw new Error("FormSubmit did not confirm the email request");
   }
 };
 
@@ -403,6 +423,10 @@ if (attachmentInput) {
 
 if (intakeForm) {
   intakeForm.action = formSubmitEndpoint;
+  const emailField = intakeForm.querySelector('input[name="Email"]');
+  if (emailField) {
+    emailField.setAttribute("value", "");
+  }
 
   intakeForm.addEventListener("submit", async (event) => {
     event.preventDefault();
