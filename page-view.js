@@ -19,6 +19,15 @@ const pageBlocks = document.querySelector("#page-blocks");
 const navRoot = document.querySelector("#site-nav");
 const metaDescription = document.querySelector('meta[name="description"]');
 
+const createTextElement = (tagName, text, className = "") => {
+  const element = document.createElement(tagName);
+  if (className) {
+    element.className = className;
+  }
+  element.textContent = text ?? "";
+  return element;
+};
+
 const mapPageFromDb = (page) => ({
   slug: page.slug,
   title: page.title,
@@ -29,6 +38,10 @@ const mapPageFromDb = (page) => ({
 });
 
 const buildNav = (pages) => {
+  if (!navRoot) {
+    return;
+  }
+
   navRoot.innerHTML = "";
 
   pages
@@ -36,9 +49,10 @@ const buildNav = (pages) => {
     .forEach((page) => {
       const link = document.createElement("a");
       link.href = PAGE_FILE_MAP[page.slug] ?? `${page.slug}.html`;
-      link.textContent = page.navLabel;
+      link.textContent = page.navLabel || page.title;
       if (page.slug === currentSlug) {
         link.classList.add("is-active");
+        link.setAttribute("aria-current", "page");
       }
       navRoot.appendChild(link);
     });
@@ -232,17 +246,19 @@ const renderCardsBlock = (block) => {
         card.appendChild(title);
 
         if (normalizedItem.body) {
-          const body = document.createElement("p");
-          body.textContent = normalizedItem.body;
-          card.appendChild(body);
+          card.appendChild(createTextElement("p", normalizedItem.body));
         }
       }
     } else {
-      card.innerHTML = `
-        <span class="card-index">${String(index + 1).padStart(2, "0")}</span>
-        <h3>${normalizedItem.title || ""}</h3>
-        <p>${normalizedItem.body || ""}</p>
-      `;
+      card.appendChild(
+        createTextElement(
+          "span",
+          String(index + 1).padStart(2, "0"),
+          "card-index"
+        )
+      );
+      card.appendChild(createTextElement("h3", normalizedItem.title || ""));
+      card.appendChild(createTextElement("p", normalizedItem.body || ""));
     }
 
     grid.appendChild(card);
@@ -278,21 +294,26 @@ const renderJobFeedBlock = async () => {
   data.forEach((job) => {
     const card = document.createElement("article");
     card.className = "job-card";
-    const tags =
-      (job.tags || [])
-        .map((tag) => `<li>${tag}</li>`)
-        .join("") || "";
 
-    card.innerHTML = `
-      <p class="job-type">${job.category || "Uppdrag"}</p>
-      <h3>${job.title}</h3>
-      <p>${job.summary || ""}</p>
-      <ul class="tag-list">${tags}</ul>
-      <div class="job-meta">
-        <span>Plats: ${job.location || "Enligt overenskommelse"}</span>
-        <span>${job.scope || "Detaljer i dialog"}</span>
-      </div>
-    `;
+    card.appendChild(createTextElement("p", job.category || "Uppdrag", "job-type"));
+    card.appendChild(createTextElement("h3", job.title || ""));
+    card.appendChild(createTextElement("p", job.summary || ""));
+
+    const tagList = document.createElement("ul");
+    tagList.className = "tag-list";
+    (job.tags || []).forEach((tag) => {
+      tagList.appendChild(createTextElement("li", tag));
+    });
+    card.appendChild(tagList);
+
+    const meta = document.createElement("div");
+    meta.className = "job-meta";
+    meta.appendChild(
+      createTextElement("span", `Plats: ${job.location || "Enligt overenskommelse"}`)
+    );
+    meta.appendChild(createTextElement("span", job.scope || "Detaljer i dialog"));
+    card.appendChild(meta);
+
     grid.appendChild(card);
   });
 
@@ -422,30 +443,51 @@ const wireStandaloneForm = (root) => {
   form.action = formSubmitEndpoint;
   const status = root.querySelector("#standalone-form-status");
   const fileInput = root.querySelector("#standalone-file");
+  const submitButton = form.querySelector('button[type="submit"]');
 
   form.addEventListener("submit", async (event) => {
     event.preventDefault();
-    status.textContent = "Skickar formularet...";
+    if (status) {
+      status.textContent = "Skickar formularet...";
+      status.dataset.state = "loading";
+    }
+    if (submitButton) {
+      submitButton.disabled = true;
+    }
 
     const formData = new FormData(form);
-    const file = fileInput.files[0];
+    const file = fileInput?.files?.[0];
 
     try {
       const filePath = file ? await uploadAttachment(file, formData.get("Kontaktroll")) : null;
       await saveInquiry(formData, filePath, file?.name ?? null);
       await notifyByEmail(formData);
       form.reset();
-      status.textContent = "Formularet ar skickat.";
+      if (status) {
+        status.textContent = "Formuläret är skickat.";
+        status.dataset.state = "success";
+      }
     } catch (error) {
       console.error(error);
-      status.textContent = "Det gick inte att skicka formularet.";
+      if (status) {
+        status.textContent = "Det gick inte att skicka formuläret.";
+        status.dataset.state = "error";
+      }
+    } finally {
+      if (submitButton) {
+        submitButton.disabled = false;
+      }
     }
   });
 };
 
 const renderPage = async (page) => {
+  if (!pageTitle || !pageBlocks) {
+    return;
+  }
+
   pageTitle.textContent = page.title;
-  document.title = `ANKA | ${page.navLabel}`;
+  document.title = `ANKA | ${page.navLabel || page.title}`;
   if (metaDescription && page.metaDescription) {
     metaDescription.setAttribute("content", page.metaDescription);
   }
@@ -471,6 +513,18 @@ const renderPage = async (page) => {
     if (element) {
       pageBlocks.appendChild(element);
     }
+  }
+
+  if (!pageBlocks.children.length) {
+    const empty = createSection("page-section");
+    empty.appendChild(
+      createTextElement(
+        "p",
+        "Innehåll uppdateras just nu. Välj en annan sida i menyn eller återkom strax.",
+        "lead"
+      )
+    );
+    pageBlocks.appendChild(empty);
   }
 };
 
