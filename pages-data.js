@@ -19,9 +19,9 @@ export const DEFAULT_PAGES = [
         type: "hero",
         data: {
           eyebrow: "Engineering services inom ADAS, Euro NCAP och testsystem",
-          title: "Produktutveckling, teknisk problemlosning och verifiering for avancerade fordonsmiljoer.",
-          body: "ANKA Consulting AB stottar kunder fran behov och teknisk utmaning till verifierad losning. Fokus ligger pa ADAS, Euro NCAP-relaterad provning, testautomation, matdata och robusta testmiljoer.",
-          buttonLabel: "Vara tjanster",
+          title: "Produktutveckling, teknisk problemlösning och verifiering för avancerade fordonsmiljöer.",
+          body: "ANKA Consulting AB stöttar kunder från behov och teknisk utmaning till verifierad lösning. Fokus ligger på ADAS, Euro NCAP-relaterad provning, testautomation, mätdata och robusta testmiljöer.",
+          buttonLabel: "Våra tjänster",
           buttonHref: "services.html",
           imageUrl:
             "https://www.abdynamics.com/app/uploads/2024/01/About-AB-Dynamics.jpg",
@@ -32,20 +32,20 @@ export const DEFAULT_PAGES = [
         type: "cards",
         data: {
           eyebrow: "Erbjudande",
-          title: "Tre tydliga spar i samma leveransmodell.",
-          body: "Vi bygger ett erbjudande som ar latt att forsta for bade teknikchefer, inkop och projektledare.",
+          title: "Tre tydliga spår i samma leveransmodell.",
+          body: "Vi bygger ett erbjudande som är lätt att förstå för både teknikchefer, inköp och projektledare.",
           items: [
             {
               title: "Produktutveckling",
-              body: "Utveckling av testnara produkter, verktyg, plattformar och integrationslosningar for moderna engineeringteam.",
+              body: "Utveckling av testnära produkter, verktyg, plattformar och integrationslösningar för moderna engineeringteam.",
             },
             {
-              title: "Problemlosning och expertstod",
-              body: "Teknisk analys, felsokning, systemforstaelse och riktade insatser i komplexa miljoer dar kvalitet och takt ar avgorande.",
+              title: "Problemlösning och expertstöd",
+              body: "Teknisk analys, felsökning, systemförståelse och riktade insatser i komplexa miljöer där kvalitet och takt är avgörande.",
             },
             {
               title: "Test och verifiering",
-              body: "ADAS, Euro NCAP-relevanta floden, HIL, GNSS/INS, automatiserad testning och sparbar datainsamling.",
+              body: "ADAS, Euro NCAP-relevanta flöden, HIL, GNSS/INS, automatiserad testning och spårbar datainsamling.",
             },
           ],
         },
@@ -56,8 +56,8 @@ export const DEFAULT_PAGES = [
         data: {
           variant: "logos",
           eyebrow: "Partners och samarbetsytor",
-          title: "Aktorer vi arbetar eller har arbetat med.",
-          body: "Sektionen ska tydligt visa de partners, testmiljoer och organisationer som ANKA har verklig koppling till genom samarbete, uppdrag eller teknisk dialog.",
+          title: "Aktörer vi jobbar med.",
+          body: "Partners, testmiljöer och organisationer som ANKA arbetar med inom utveckling, test och verifiering.",
           items: [
             {
               title: "AB Dynamics",
@@ -67,7 +67,7 @@ export const DEFAULT_PAGES = [
             },
             {
               title: "OXTS",
-              body: "Partner inom GNSS/INS, lokalisation och precisionsmatning.",
+              body: "Partner inom GNSS/INS, lokalisation och precisionsmätning.",
               href: "https://www.oxts.com/",
               imageUrl: "OxTS-Master-Full-Colour-Black-1-footer-400x144-c-default.webp",
             },
@@ -79,25 +79,25 @@ export const DEFAULT_PAGES = [
             },
             {
               title: "AstaZero",
-              body: "Testmiljo for aktiv sakerhet, ADAS och automatiserade fordon.",
+              body: "Testmiljö för aktiv säkerhet, ADAS och automatiserade fordon.",
               href: "https://www.astazero.com/",
               imageUrl: "AZ-LOGO_POS.png",
             },
             {
               title: "Euro NCAP",
-              body: "Referensyta for sakerhetskrav, provningsscenarier och ADAS-relevanta testfloden.",
+              body: "Referensyta för säkerhetskrav, provningsscenarier och ADAS-relevanta testflöden.",
               href: "https://www.euroncap.com/",
               imageUrl: "Euro_NCAP_Logo_Black_da89494d0e.png",
             },
             {
-              title: "Hogskolan i Boras",
-              body: "Akademisk partner med koppling till teknik, utveckling och kompetensforsorjning.",
+              title: "Högskolan i Borås",
+              body: "Akademisk partner med koppling till teknik, utveckling och kompetensförsörjning.",
               href: "https://www.hb.se/",
               imageUrl: "hb_logo.png",
             },
             {
               title: "ESSIQ",
-              body: "Problemlosare inom produktutveckling och teknik.",
+              body: "Problemlösare inom produktutveckling och teknik.",
               href: "https://essiq.se/",
               imageUrl: "Essiq-Pos-Logo.png",
             },
@@ -108,9 +108,9 @@ export const DEFAULT_PAGES = [
         id: "home-cta",
         type: "cta",
         data: {
-          eyebrow: "Arbetssatt",
-          title: "Fran tekniskt problem till verifierad leverans.",
-          body: "Vi arbetar nara kundens verkliga utvecklingsmiljo med kombinationen konsultkompetens, partnerlosningar och produktnara engineering. Resultatet ska vara anvandbart i vardagen, inte bara snyggt pa papper.",
+          eyebrow: "Arbetssätt",
+          title: "Från tekniskt problem till verifierad leverans.",
+          body: "Vi arbetar nära kundens verkliga utvecklingsmiljö med kombinationen konsultkompetens, partnerlösningar och produktnära engineering. Resultatet ska vara användbart i vardagen, inte bara snyggt på papper.",
           buttonLabel: "Kontakta oss",
           buttonHref: "contact.html",
         },
@@ -119,8 +119,8 @@ export const DEFAULT_PAGES = [
   },
   {
     slug: "services",
-    title: "Tjanster",
-    navLabel: "Tjanster",
+    title: "Tjänster",
+    navLabel: "Tjänster",
     metaDescription: "ANKA Consulting AB inom automation, ADAS och teknisk leverans.",
     published: true,
     blocks: [
@@ -128,9 +128,9 @@ export const DEFAULT_PAGES = [
         id: "services-hero",
         type: "hero",
         data: {
-          eyebrow: "Tjanster",
-          title: "Engineeringtjanster for produktutveckling, verifiering och teknisk problemlosning.",
-          body: "Vara tjanster ar byggda for kunder som utvecklar, verifierar och industrialiserar avancerade system inom fordon, ADAS, automation och intelligenta testmiljoer.",
+          eyebrow: "Tjänster",
+          title: "Engineeringtjänster för produktutveckling, verifiering och teknisk problemlösning.",
+          body: "Våra tjänster är byggda för kunder som utvecklar, verifierar och industrialiserar avancerade system inom fordon, ADAS, automation och intelligenta testmiljöer.",
           buttonLabel: "Kontakta oss",
           buttonHref: "contact.html",
           imageUrl:
@@ -141,21 +141,21 @@ export const DEFAULT_PAGES = [
         id: "services-cards",
         type: "cards",
         data: {
-          eyebrow: "Tjansteomraden",
-          title: "Kompetens som kopplar ihop utveckling, test och verklig anvandning.",
-          body: "Vi vill vara tydliga med vad kunder faktiskt kan fa hjalp med.",
+          eyebrow: "Tjänsteområden",
+          title: "Kompetens som kopplar ihop utveckling, test och verklig användning.",
+          body: "Vi vill vara tydliga med vad kunder faktiskt kan få hjälp med.",
           items: [
             {
               title: "Produktutveckling",
-              body: "Utveckling av verktyg, delsystem, testplattformar och tekniska losningar som effektiviserar kundens vardag.",
+              body: "Utveckling av verktyg, delsystem, testplattformar och tekniska lösningar som effektiviserar kundens vardag.",
             },
             {
               title: "Test och verifiering",
-              body: "ADAS-validering, teststrategi, HIL/SIL, automatiserade floden och kvalitetssakring med sparbara resultat.",
+              body: "ADAS-validering, teststrategi, HIL/SIL, automatiserade flöden och kvalitetssäkring med spårbara resultat.",
             },
             {
-              title: "Teknisk problemlosning",
-              body: "Analys, felsokning, integration och expertstod nar system, testmiljo eller dataflode inte beter sig som de ska.",
+              title: "Teknisk problemlösning",
+              body: "Analys, felsökning, integration och expertstöd när system, testmiljö eller dataflöde inte beter sig som de ska.",
             },
           ],
         },
@@ -164,21 +164,21 @@ export const DEFAULT_PAGES = [
         id: "services-focus",
         type: "cards",
         data: {
-          eyebrow: "Sarskilda fokusomraden",
-          title: "Dar ANKA ska vara som starkast.",
-          body: "Innehall och erbjudande ska peka mot de omraden dar bolaget kan bygga verkligt fortroende.",
+          eyebrow: "Särskilda fokusområden",
+          title: "Där ANKA ska vara som starkast.",
+          body: "Innehåll och erbjudande ska peka mot de områden där bolaget kan bygga verkligt förtroende.",
           items: [
             {
               title: "ADAS och Euro NCAP",
-              body: "Stod kring testupplagg, scenarier, matning, analys och verifieringsfloden for assisterade och aktiva sakerhetssystem.",
+              body: "Stöd kring testupplägg, scenarier, mätning, analys och verifieringsflöden för assisterade och aktiva säkerhetssystem.",
             },
             {
-              title: "Automation och testmiljoer",
-              body: "Utveckling och stabilisering av testutrustning, testriggar, loggning, regression och exekveringsfloden.",
+              title: "Automation och testmiljöer",
+              body: "Utveckling och stabilisering av testutrustning, testriggar, loggning, regression och exekveringsflöden.",
             },
             {
-              title: "Positionering och matdata",
-              body: "GNSS/INS, sensorfusion, datakvalitet och robust sparbarhet for utveckling, provning och validering.",
+              title: "Positionering och mätdata",
+              body: "GNSS/INS, sensorfusion, datakvalitet och robust spårbarhet för utveckling, provning och validering.",
             },
           ],
         },
@@ -189,7 +189,7 @@ export const DEFAULT_PAGES = [
     slug: "partners",
     title: "Partners",
     navLabel: "Partners",
-    metaDescription: "Partnerlosningar fran AB Dynamics och OXTS.",
+    metaDescription: "Partners och organisationer som ANKA arbetar eller har arbetat med.",
     published: true,
     blocks: [
       {
@@ -197,31 +197,8 @@ export const DEFAULT_PAGES = [
         type: "text",
         data: {
           eyebrow: "Partners",
-          title: "Partners, organisationer och miljoer vi arbetar eller har arbetat med.",
-          body: "ANKA verkar i ett sammanhang dar teknikleverantorer, testanlaggningar, akademi och sakerhetsorganisationer spelar stor roll. Den har sidan ska visa verkliga partnerrelationer och relevanta samarbetsytor.",
-        },
-      },
-      {
-        id: "partners-cards",
-        type: "cards",
-        data: {
-          eyebrow: "Partnerportfolj",
-          title: "Ratt teknik for ratt testutmaning.",
-          body: "Partnerdelen ska visa att ANKA inte bara tillsatter kompetens, utan ocksa kan bygga en starkare testmiljo tillsammans med kunden.",
-          items: [
-            {
-              title: "AB Dynamics",
-              body: "Driving robots, ADAS targets, testbanestod och system for repeterbar och kontrollerad fordonsprovning.",
-            },
-            {
-              title: "OXTS",
-              body: "GNSS/INS, positionering, lokalisering och robust matdata for ADAS, autonomi och avancerad verifiering.",
-            },
-            {
-              title: "Integrationsstod",
-              body: "Val av losning, teknisk dialog, systemanpassning och stod kring hur utrustningen passar in i kundens befintliga testflode.",
-            },
-          ],
+          title: "Våra partners.",
+          body: "Det här är partners och organisationer som vi arbetar eller har arbetat med.",
         },
       },
       {
@@ -229,49 +206,50 @@ export const DEFAULT_PAGES = [
         type: "cards",
         data: {
           variant: "logos",
-          eyebrow: "Partners och samarbete",
-          title: "Logotyper for partners och organisationer med verklig koppling till ANKA.",
-          body: "Det har ar inte en inspirationslista, utan bolag och miljoer som ANKA arbetar eller har arbetat med inom test, ADAS, utveckling och verifiering.",
+          minimal: true,
+          eyebrow: "Partners",
+          title: "Aktörer vi arbetar eller har arbetat med.",
+          body: "Partners, testmiljöer och organisationer med verklig koppling till ANKA.",
           items: [
             {
               title: "AB Dynamics",
-              body: "Partner inom test och verifiering.",
+              body: "",
               href: "https://www.abdynamics.com/",
               imageUrl: "AB_Dynamics.png",
             },
             {
               title: "OXTS",
-              body: "Partner inom positionering och matdata.",
+              body: "",
               href: "https://www.oxts.com/",
               imageUrl: "OxTS-Master-Full-Colour-Black-1-footer-400x144-c-default.webp",
             },
             {
               title: "RISE",
-              body: "Forskningsinstitut och testnara samarbetsyta.",
+              body: "",
               href: "https://www.ri.se/",
               imageUrl: "RISE.png",
             },
             {
               title: "AstaZero",
-              body: "Provning inom aktiv sakerhet och automatiserade fordon.",
+              body: "",
               href: "https://www.astazero.com/",
               imageUrl: "AZ-LOGO_POS.png",
             },
             {
               title: "Euro NCAP",
-              body: "Sakerhetsorganisation med tydlig koppling till ADAS- och verifieringsarbete.",
+              body: "",
               href: "https://www.euroncap.com/",
               imageUrl: "Euro_NCAP_Logo_Black_da89494d0e.png",
             },
             {
-              title: "Hogskolan i Boras",
-              body: "Akademisk partner i samma innovations- och kompetensekosystem.",
+              title: "Högskolan i Borås",
+              body: "",
               href: "https://www.hb.se/",
               imageUrl: "hb_logo.png",
             },
             {
               title: "ESSIQ",
-              body: "Engineeringprofil inom produktutveckling och problemlosning.",
+              body: "",
               href: "https://essiq.se/",
               imageUrl: "Essiq-Pos-Logo.png",
             },

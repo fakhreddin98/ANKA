@@ -176,6 +176,7 @@ const renderCardsBlock = (block) => {
 
   const grid = document.createElement("div");
   const isLogoVariant = block.data.variant === "logos";
+  const isMinimalLogoVariant = isLogoVariant && block.data.minimal === true;
   grid.className = isLogoVariant ? "logo-wall" : "capability-grid";
 
   (block.data.items || []).forEach((item, index) => {
@@ -214,13 +215,19 @@ const renderCardsBlock = (block) => {
         mark.appendChild(image);
       }
 
-      const title = document.createElement("h3");
-      title.textContent = normalizedItem.title || "";
+      card.appendChild(mark);
 
-      const body = document.createElement("p");
-      body.textContent = normalizedItem.body || "";
+      if (!isMinimalLogoVariant) {
+        const title = document.createElement("h3");
+        title.textContent = normalizedItem.title || "";
+        card.appendChild(title);
 
-      card.append(mark, title, body);
+        if (normalizedItem.body) {
+          const body = document.createElement("p");
+          body.textContent = normalizedItem.body;
+          card.appendChild(body);
+        }
+      }
     } else {
       card.innerHTML = `
         <span class="card-index">${String(index + 1).padStart(2, "0")}</span>
