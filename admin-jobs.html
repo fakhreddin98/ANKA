@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="sv">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ANKA | Uppdrag Admin</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Space+Grotesk:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="admin.css" />
+    <script src="config.js"></script>
+    <script type="module" src="admin-jobs.js"></script>
+  </head>
+  <body class="admin-body">
+    <div class="page-glow page-glow-left"></div>
+    <div class="page-glow page-glow-right"></div>
+    <div class="site-shell admin-shell">
+      <header class="topbar admin-topbar">
+        <a class="brand" href="admin.html">
+          <span class="brand-mark">A</span>
+          <span class="brand-text"><strong>ANKA</strong><span>Uppdrag</span></span>
+        </a>
+        <div class="admin-topbar-actions">
+          <a class="button button-ghost" href="admin.html">Oversikt</a>
+          <a class="button button-ghost" href="admin-pages.html">Sidredigering</a>
+          <a class="button button-ghost" href="admin-inquiries.html">Formular</a>
+          <button class="button button-ghost" id="logout-button" type="button">Logga ut</button>
+        </div>
+      </header>
+      <main class="admin-main">
+        <section class="admin-grid">
+          <section class="admin-panel">
+            <div class="admin-section-heading">
+              <div>
+                <p class="eyebrow">Uppdragshantering</p>
+                <h1>Skapa eller uppdatera uppdrag</h1>
+              </div>
+              <button class="button button-ghost" id="reset-job-form" type="button">
+                Nytt uppdrag
+              </button>
+            </div>
+            <form class="admin-form" id="job-form">
+              <input type="hidden" id="job-id" />
+              <div class="admin-two-col">
+                <label class="field">
+                  <span>Titel</span>
+                  <input type="text" id="job-title" required />
+                </label>
+                <label class="field">
+                  <span>Kategori</span>
+                  <input type="text" id="job-category" required />
+                </label>
+                <label class="field">
+                  <span>Plats</span>
+                  <input type="text" id="job-location" />
+                </label>
+                <label class="field">
+                  <span>Omfattning</span>
+                  <input type="text" id="job-scope" />
+                </label>
+              </div>
+              <label class="field">
+                <span>Kort beskrivning</span>
+                <textarea id="job-summary" rows="4" required></textarea>
+              </label>
+              <label class="field">
+                <span>Taggar</span>
+                <input type="text" id="job-tags" placeholder="Python, HIL, CANoe" />
+              </label>
+              <label class="consent-row admin-checkbox">
+                <input type="checkbox" id="job-published" />
+                <span>Publicera uppdraget direkt</span>
+              </label>
+              <button class="button" type="submit" id="job-submit-button">Spara uppdrag</button>
+              <p class="form-status" id="job-status" aria-live="polite"></p>
+            </form>
+          </section>
+          <section class="admin-panel">
+            <div class="admin-section-heading">
+              <div>
+                <p class="eyebrow">Lista</p>
+                <h2>Alla uppdrag</h2>
+              </div>
+            </div>
+            <div class="admin-list" id="jobs-admin-list"></div>
+          </section>
+        </section>
+      </main>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="sv">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ANKA | Sidredigering</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Space+Grotesk:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="admin.css" />
+    <script src="config.js"></script>
+    <script type="module" src="admin-pages.js"></script>
+  </head>
+  <body class="admin-body">
+    <div class="page-glow page-glow-left"></div>
+    <div class="page-glow page-glow-right"></div>
+    <div class="site-shell admin-shell">
+      <header class="topbar admin-topbar">
+        <a class="brand" href="admin.html">
+          <span class="brand-mark">A</span>
+          <span class="brand-text"><strong>ANKA</strong><span>Page Builder</span></span>
+        </a>
+        <div class="admin-topbar-actions">
+          <a class="button button-ghost" href="admin.html">Till admin</a>
+          <a class="button button-ghost" href="admin-jobs.html">Uppdrag</a>
+          <a class="button button-ghost" href="admin-inquiries.html">Formular</a>
+          <button class="button button-ghost" id="logout-button" type="button">Logga ut</button>
+        </div>
+      </header>
+      <main class="admin-main">
+        <section class="admin-grid">
+          <section class="admin-panel">
+            <div class="admin-section-heading">
+              <div>
+                <p class="eyebrow">Sidor</p>
+                <h2>Valj sida</h2>
+              </div>
+            </div>
+            <div class="admin-list" id="page-list"></div>
+          </section>
+          <section class="admin-panel">
+            <div class="admin-section-heading">
+              <div>
+                <p class="eyebrow">Editor</p>
+                <h2 id="editor-page-title">Ingen sida vald</h2>
+              </div>
+              <div class="admin-actions">
+                <select class="admin-select" id="new-block-type">
+                  <option value="hero">Hero</option>
+                  <option value="text">Text</option>
+                  <option value="cards">Cards</option>
+                  <option value="cta">CTA</option>
+                  <option value="job-feed">Job feed</option>
+                  <option value="intake-form">Form</option>
+                </select>
+                <button class="button button-ghost" id="add-block-button" type="button">Lagg till block</button>
+                <button class="button button-ghost" id="reset-page-button" type="button">
+                  Aterstall standardsida
+                </button>
+              </div>
+            </div>
+            <form class="admin-form" id="page-meta-form">
+              <div class="admin-two-col">
+                <label class="field">
+                  <span>Sidtitel</span>
+                  <input type="text" id="page-title-input" />
+                </label>
+                <label class="field">
+                  <span>Navigationstext</span>
+                  <input type="text" id="page-nav-input" />
+                </label>
+                <label class="field field-full">
+                  <span>Meta description</span>
+                  <textarea id="page-meta-description" rows="3"></textarea>
+                </label>
+                <label class="consent-row admin-checkbox">
+                  <input type="checkbox" id="page-published" />
+                  <span>Publicerad</span>
+                </label>
+              </div>
+            </form>
+            <div class="admin-list" id="block-list"></div>
+            <button class="button" id="save-page-button" type="button">Spara sida</button>
+            <p class="form-status" id="page-builder-status" aria-live="polite"></p>
+          </section>
+        </section>
+      </main>
+    </div>
+  </body>
+</html>

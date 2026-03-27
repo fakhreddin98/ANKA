@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="sv">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ANKA Admin</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Space+Grotesk:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="admin.css" />
+    <script src="config.js"></script>
+    <script type="module" src="admin.js"></script>
+  </head>
+  <body class="admin-body">
+    <div class="page-glow page-glow-left"></div>
+    <div class="page-glow page-glow-right"></div>
+
+    <div class="site-shell admin-shell">
+      <header class="topbar admin-topbar">
+        <a class="brand" href="index.html" aria-label="Tillbaka till ANKA">
+          <span class="brand-mark">A</span>
+          <span class="brand-text">
+            <strong>ANKA</strong>
+            <span>Admin Portal</span>
+          </span>
+        </a>
+
+        <div class="admin-topbar-actions">
+          <a class="button button-ghost" href="admin-jobs.html">Uppdrag</a>
+          <a class="button button-ghost" href="admin-inquiries.html">Formular</a>
+          <a class="button button-ghost" href="admin-pages.html">Sidredigering</a>
+          <span class="admin-session" id="admin-session-label">Ej inloggad</span>
+          <button class="button button-ghost" id="logout-button" type="button" hidden>
+            Logga ut
+          </button>
+        </div>
+      </header>
+
+      <main class="admin-main">
+        <section class="admin-panel auth-panel" id="config-warning" hidden>
+          <p class="eyebrow">Konfiguration saknas</p>
+          <h1>Adminportalen kr&auml;ver Supabase.</h1>
+          <p class="lead">
+            Fyll i `supabaseUrl` och `supabaseAnonKey` i `config.js` och k&ouml;r SQL-filen
+            innan portalen kan anv&auml;ndas.
+          </p>
+        </section>
+
+        <section class="admin-panel auth-panel" id="login-panel">
+          <p class="eyebrow">Inloggning</p>
+          <h1>Administrera uppdrag och inkomna formul&auml;r.</h1>
+          <p class="lead">
+            Logga in med administrat&ouml;rskontot f&ouml;r att publicera uppdrag,
+            granska inkomna formul&auml;r och ladda ner CV-underlag.
+          </p>
+
+          <form class="admin-form" id="login-form">
+            <label class="field">
+              <span>E-post</span>
+              <input type="email" id="login-email" placeholder="fakher.abewe@gmail.com" required />
+            </label>
+
+            <label class="field">
+              <span>L&ouml;senord</span>
+              <input type="password" id="login-password" placeholder="Ditt l&ouml;senord" required />
+            </label>
+
+            <button class="button" type="submit">Logga in</button>
+            <p class="form-status" id="login-status" aria-live="polite"></p>
+          </form>
+        </section>
+
+        <section class="admin-dashboard" id="admin-dashboard" hidden>
+          <section class="admin-panel">
+            <div class="admin-section-heading">
+              <div>
+                <p class="eyebrow">Ny struktur</p>
+                <h2>Admin ar nu uppdelad i flera arbetsytor</h2>
+              </div>
+            </div>
+            <div class="admin-actions">
+              <a class="button" href="admin-pages.html">Sidredigering</a>
+              <a class="button button-ghost" href="admin-jobs.html">Uppdrag</a>
+              <a class="button button-ghost" href="admin-inquiries.html">Formular</a>
+            </div>
+          </section>
+
+          <section class="admin-summary">
+            <article class="admin-panel metric-card">
+              <p class="eyebrow">Publicerade uppdrag</p>
+              <h2 id="metric-jobs">0</h2>
+              <p>Antal uppdrag som visas publikt p&aring; webbplatsen.</p>
+            </article>
+
+            <article class="admin-panel metric-card">
+              <p class="eyebrow">Nya f&ouml;rfr&aring;gningar</p>
+              <h2 id="metric-inquiries">0</h2>
+              <p>Inkomna formul&auml;r som &auml;nnu inte markerats som hanterade.</p>
+            </article>
+          </section>
+
+          <section class="admin-panel">
+            <div class="admin-section-heading">
+              <div>
+                <p class="eyebrow">Sidinnehall</p>
+                <h2>Redigera webbplatsens texter och sektioner</h2>
+              </div>
+            </div>
+
+            <form class="admin-form" id="content-form">
+              <div class="admin-content-block">
+                <h3>Brand och design</h3>
+                <div class="admin-two-col">
+                  <label class="field">
+                    <span>Brandtitel</span>
+                    <input type="text" id="content-brand-title" />
+                  </label>
+                  <label class="field">
+                    <span>Brand undertitel</span>
+                    <input type="text" id="content-brand-subtitle" />
+                  </label>
+                  <label class="field">
+                    <span>Footer bolagsnamn</span>
+                    <input type="text" id="content-footer-company" />
+                  </label>
+                  <label class="field field-full">
+                    <span>Footer sammanfattning</span>
+                    <textarea id="content-footer-summary" rows="3"></textarea>
+                  </label>
+                  <label class="field">
+                    <span>Accentfarg</span>
+                    <input type="color" id="theme-accent" />
+                  </label>
+                  <label class="field">
+                    <span>Accent ljus</span>
+                    <input type="color" id="theme-accent-strong" />
+                  </label>
+                  <label class="field">
+                    <span>Bakgrund start</span>
+                    <input type="color" id="theme-bg-start" />
+                  </label>
+                  <label class="field">
+                    <span>Bakgrund mitten</span>
+                    <input type="color" id="theme-bg-mid" />
+                  </label>
+                  <label class="field">
+                    <span>Bakgrund slut</span>
+                    <input type="color" id="theme-bg-end" />
+                  </label>
+                  <label class="field">
+                    <span>Glow vanster</span>
+                    <input type="color" id="theme-glow-left" />
+                  </label>
+                  <label class="field">
+                    <span>Glow hoger</span>
+                    <input type="color" id="theme-glow-right" />
+                  </label>
+                  <label class="field">
+                    <span>Sektionsordning</span>
+                    <textarea id="content-section-order" rows="4" placeholder="partners&#10;uppdrag&#10;kontakt"></textarea>
+                  </label>
+                </div>
+              </div>
+
+              <div class="admin-content-block">
+                <h3>Hero</h3>
+                <div class="admin-two-col">
+                  <label class="field">
+                    <span>Eyebrow</span>
+                    <input type="text" id="content-hero-eyebrow" />
+                  </label>
+                  <label class="field">
+                    <span>Badge label</span>
+                    <input type="text" id="content-hero-badge-label" />
+                  </label>
+                  <label class="field field-full">
+                    <span>Titel</span>
+                    <textarea id="content-hero-title" rows="3"></textarea>
+                  </label>
+                  <label class="field field-full">
+                    <span>Ingress</span>
+                    <textarea id="content-hero-lead" rows="4"></textarea>
+                  </label>
+                  <label class="field">
+                    <span>Primar knapptext</span>
+                    <input type="text" id="content-hero-primary-label" />
+                  </label>
+                  <label class="field">
+                    <span>Primar knapplank</span>
+                    <input type="text" id="content-hero-primary-href" />
+                  </label>
+                  <label class="field">
+                    <span>Sekundar knapptext</span>
+                    <input type="text" id="content-hero-secondary-label" />
+                  </label>
+                  <label class="field">
+                    <span>Sekundar knapplank</span>
+                    <input type="text" id="content-hero-secondary-href" />
+                  </label>
+                  <label class="field">
+                    <span>Hero-bild URL</span>
+                    <input type="text" id="content-hero-primary-image" />
+                  </label>
+                  <label class="field">
+                    <span>Hero-bild bildtext</span>
+                    <input type="text" id="content-hero-primary-caption" />
+                  </label>
+                  <label class="field">
+                    <span>Sekundar bild URL</span>
+                    <input type="text" id="content-hero-secondary-image" />
+                  </label>
+                  <label class="field">
+                    <span>Sekundar bildtext</span>
+                    <input type="text" id="content-hero-secondary-caption" />
+                  </label>
+                  <label class="field field-full">
+                    <span>Badge text</span>
+                    <input type="text" id="content-hero-badge-text" />
+                  </label>
+                </div>
+              </div>
+
+              <div class="admin-content-block">
+                <div class="admin-content-header">
+                  <h3>Partners</h3>
+                  <label class="consent-row admin-checkbox">
+                    <input type="checkbox" id="toggle-partners" />
+                    <span>Visa sektionen</span>
+                  </label>
+                </div>
+                <div class="admin-two-col">
+                  <label class="field">
+                    <span>Eyebrow</span>
+                    <input type="text" id="content-partners-eyebrow" />
+                  </label>
+                  <label class="field field-full">
+                    <span>Titel</span>
+                    <textarea id="content-partners-title" rows="3"></textarea>
+                  </label>
+                  <label class="field field-full">
+                    <span>Ingress</span>
+                    <textarea id="content-partners-lead" rows="3"></textarea>
+                  </label>
+                  <label class="field field-full">
+                    <span>AB Dynamics titel</span>
+                    <input type="text" id="content-partner-ab-title" />
+                  </label>
+                  <label class="field field-full">
+                    <span>AB Dynamics text</span>
+                    <textarea id="content-partner-ab-body" rows="3"></textarea>
+                  </label>
+                  <label class="field">
+                    <span>AB Dynamics punkter</span>
+                    <textarea id="content-partner-ab-points" rows="4"></textarea>
+                  </label>
+                  <label class="field">
+                    <span>AB Dynamics lank</span>
+                    <input type="text" id="content-partner-ab-link" />
+                  </label>
+                  <label class="field field-full">
+                    <span>OXTS titel</span>
+                    <input type="text" id="content-partner-oxts-title" />
+                  </label>
+                  <label class="field field-full">
+                    <span>OXTS text</span>
+                    <textarea id="content-partner-oxts-body" rows="3"></textarea>
+                  </label>
+                  <label class="field">
+                    <span>OXTS punkter</span>
+                    <textarea id="content-partner-oxts-points" rows="4"></textarea>
+                  </label>
+                  <label class="field">
+                    <span>OXTS lank</span>
+                    <input type="text" id="content-partner-oxts-link" />
+                  </label>
+                </div>
+              </div>
+
+              <div class="admin-content-block">
+                <h3>Erbjudande</h3>
+                <div class="admin-two-col">
+                  <label class="field">
+                    <span>Eyebrow</span>
+                    <input type="text" id="content-offer-eyebrow" />
+                  </label>
+                  <label class="field field-full">
+                    <span>Titel</span>
+                    <textarea id="content-offer-title" rows="3"></textarea>
+                  </label>
+                  <label class="field field-full">
+                    <span>Ingress</span>
+                    <textarea id="content-offer-lead" rows="3"></textarea>
+                  </label>
+                  <label class="field">
+                    <span>Kort 1 titel</span>
+                    <input type="text" id="content-offer-card-1-title" />
+                  </label>
+                  <label class="field">
+                    <span>Kort 2 titel</span>
+                    <input type="text" id="content-offer-card-2-title" />
+                  </label>
+                  <label class="field">
+                    <span>Kort 3 titel</span>
+                    <input type="text" id="content-offer-card-3-title" />
+                  </label>
+                  <label class="field field-full">
+                    <span>Kort 1 text</span>
+                    <textarea id="content-offer-card-1-body" rows="3"></textarea>
+                  </label>
+                  <label class="field field-full">
+                    <span>Kort 2 text</span>
+                    <textarea id="content-offer-card-2-body" rows="3"></textarea>
+                  </label>
+                  <label class="field field-full">
+                    <span>Kort 3 text</span>
+                    <textarea id="content-offer-card-3-body" rows="3"></textarea>
+                  </label>
+                </div>
+              </div>
+
+              <div class="admin-content-block">
+                <div class="admin-content-header">
+                  <h3>Uppdrag och kontakt</h3>
+                  <div class="admin-toggle-group">
+                    <label class="consent-row admin-checkbox">
+                      <input type="checkbox" id="toggle-jobs" />
+                      <span>Visa uppdragssektionen</span>
+                    </label>
+                    <label class="consent-row admin-checkbox">
+                      <input type="checkbox" id="toggle-contact" />
+                      <span>Visa kontaktsektionen</span>
+                    </label>
+                  </div>
+                </div>
+                <div class="admin-two-col">
+                  <label class="field">
+                    <span>Uppdrag eyebrow</span>
+                    <input type="text" id="content-jobs-eyebrow" />
+                  </label>
+                  <label class="field field-full">
+                    <span>Uppdrag titel</span>
+                    <textarea id="content-jobs-title" rows="2"></textarea>
+                  </label>
+                  <label class="field field-full">
+                    <span>Uppdrag ingress</span>
+                    <textarea id="content-jobs-lead" rows="3"></textarea>
+                  </label>
+                  <label class="field">
+                    <span>Tomlista etikett</span>
+                    <input type="text" id="content-jobs-empty-label" />
+                  </label>
+                  <label class="field field-full">
+                    <span>Tomlista titel</span>
+                    <textarea id="content-jobs-empty-title" rows="2"></textarea>
+                  </label>
+                  <label class="field field-full">
+                    <span>Tomlista text</span>
+                    <textarea id="content-jobs-empty-body" rows="3"></textarea>
+                  </label>
+                  <label class="field">
+                    <span>Kontakt eyebrow</span>
+                    <input type="text" id="content-contact-eyebrow" />
+                  </label>
+                  <label class="field field-full">
+                    <span>Kontakt titel</span>
+                    <textarea id="content-contact-title" rows="2"></textarea>
+                  </label>
+                  <label class="field field-full">
+                    <span>Kontakt ingress</span>
+                    <textarea id="content-contact-lead" rows="3"></textarea>
+                  </label>
+                  <label class="field">
+                    <span>Panel etikett</span>
+                    <input type="text" id="content-contact-panel-label" />
+                  </label>
+                  <label class="field field-full">
+                    <span>Panel titel</span>
+                    <textarea id="content-contact-panel-title" rows="2"></textarea>
+                  </label>
+                  <label class="field field-full">
+                    <span>Panellista, en rad per punkt</span>
+                    <textarea id="content-contact-panel-items" rows="4"></textarea>
+                  </label>
+                  <label class="field">
+                    <span>Anteckning etikett</span>
+                    <input type="text" id="content-contact-note-label" />
+                  </label>
+                  <label class="field field-full">
+                    <span>Anteckning text</span>
+                    <textarea id="content-contact-note-text" rows="3"></textarea>
+                  </label>
+                </div>
+              </div>
+
+              <button class="button" type="submit">Spara webbplatsinnehall</button>
+              <p class="form-status" id="content-status" aria-live="polite"></p>
+            </form>
+          </section>
+
+          <section class="admin-grid">
+            <section class="admin-panel">
+              <div class="admin-section-heading">
+                <div>
+                  <p class="eyebrow">Uppdragshantering</p>
+                  <h2>Skapa eller uppdatera uppdrag</h2>
+                </div>
+                <button class="button button-ghost" id="reset-job-form" type="button">
+                  Nytt uppdrag
+                </button>
+              </div>
+
+              <form class="admin-form" id="job-form">
+                <input type="hidden" id="job-id" />
+
+                <div class="admin-two-col">
+                  <label class="field">
+                    <span>Titel</span>
+                    <input type="text" id="job-title" required />
+                  </label>
+
+                  <label class="field">
+                    <span>Kategori</span>
+                    <input type="text" id="job-category" placeholder="ADAS, Automation, Embedded" required />
+                  </label>
+
+                  <label class="field">
+                    <span>Plats</span>
+                    <input type="text" id="job-location" placeholder="Stockholm / Hybrid" />
+                  </label>
+
+                  <label class="field">
+                    <span>Omfattning</span>
+                    <input type="text" id="job-scope" placeholder="Heltid, 6 månader" />
+                  </label>
+                </div>
+
+                <label class="field">
+                  <span>Kort beskrivning</span>
+                  <textarea id="job-summary" rows="4" required></textarea>
+                </label>
+
+                <label class="field">
+                  <span>Taggar</span>
+                  <input type="text" id="job-tags" placeholder="Python, HIL, CANoe" />
+                </label>
+
+                <label class="consent-row admin-checkbox">
+                  <input type="checkbox" id="job-published" />
+                  <span>Publicera uppdraget direkt</span>
+                </label>
+
+                <button class="button" type="submit" id="job-submit-button">Spara uppdrag</button>
+                <p class="form-status" id="job-status" aria-live="polite"></p>
+              </form>
+            </section>
+
+            <section class="admin-panel">
+              <div class="admin-section-heading">
+                <div>
+                  <p class="eyebrow">Publicerade och utkast</p>
+                  <h2>Uppdrag i databasen</h2>
+                </div>
+              </div>
+              <div class="admin-list" id="jobs-admin-list"></div>
+            </section>
+          </section>
+
+          <section class="admin-panel">
+            <div class="admin-section-heading">
+              <div>
+                <p class="eyebrow">Inkomna formul&auml;r</p>
+                <h2>Kandidater och uppdragsgivare</h2>
+              </div>
+            </div>
+            <div class="admin-list inquiries-list" id="inquiries-admin-list"></div>
+          </section>
+        </section>
+      </main>
+    </div>
+  </body>
+</html>
