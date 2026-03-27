@@ -17,7 +17,7 @@
 }
 
 .admin-session {
-  color: #aab8ca;
+  color: var(--muted);
 }
 
 .admin-main {
@@ -27,10 +27,10 @@
 
 .admin-panel {
   padding: 30px;
-  border: 1px solid rgba(138, 158, 184, 0.16);
+  border: 1px solid rgba(23, 49, 59, 0.1);
   border-radius: var(--radius-lg);
   background:
-    linear-gradient(180deg, rgba(11, 17, 27, 0.98), rgba(7, 11, 18, 0.98)),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(246, 248, 248, 0.94)),
     var(--surface);
   box-shadow: var(--shadow);
 }
@@ -67,9 +67,9 @@
   display: grid;
   gap: 16px;
   padding: 18px;
-  border: 1px solid rgba(138, 158, 184, 0.14);
+  border: 1px solid rgba(23, 49, 59, 0.08);
   border-radius: 22px;
-  background: rgba(8, 12, 19, 0.78);
+  background: rgba(245, 248, 248, 0.92);
 }
 
 .admin-content-header {
@@ -108,9 +108,9 @@
   display: grid;
   gap: 12px;
   padding: 18px;
-  border: 1px solid rgba(138, 158, 184, 0.16);
+  border: 1px solid rgba(23, 49, 59, 0.1);
   border-radius: 22px;
-  background: rgba(8, 12, 19, 0.92);
+  background: rgba(255, 255, 255, 0.94);
 }
 
 .admin-list-item[draggable="true"] {
@@ -135,7 +135,7 @@
 
 .admin-list-item p,
 .admin-list-item span {
-  color: #aab8ca;
+  color: var(--muted);
   line-height: 1.6;
 }
 
@@ -144,8 +144,8 @@
   width: fit-content;
   padding: 6px 10px;
   border-radius: 999px;
-  background: rgba(255, 157, 92, 0.12);
-  color: #ffb784;
+  background: rgba(27, 124, 131, 0.12);
+  color: var(--accent-strong);
   font-size: 0.8rem;
   text-transform: uppercase;
   letter-spacing: 0.08em;
@@ -160,8 +160,8 @@
 .admin-tag {
   padding: 8px 12px;
   border-radius: 999px;
-  background: rgba(120, 216, 255, 0.12);
-  color: #97dfff;
+  background: rgba(27, 124, 131, 0.1);
+  color: var(--accent-strong);
   font-size: 0.9rem;
 }
 
@@ -172,17 +172,17 @@
 }
 
 .admin-link {
-  color: #97dfff;
+  color: var(--accent-strong);
   font-weight: 700;
 }
 
 .admin-select {
   min-width: 160px;
   padding: 12px 14px;
-  border: 1px solid rgba(138, 158, 184, 0.16);
+  border: 1px solid rgba(23, 49, 59, 0.12);
   border-radius: 14px;
-  background: rgba(8, 12, 19, 0.92);
-  color: #eef3fb;
+  background: rgba(255, 255, 255, 0.96);
+  color: var(--text);
 }
 
 .admin-checkbox {

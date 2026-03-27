@@ -18,10 +18,10 @@ export const DEFAULT_PAGES = [
         id: "home-hero",
         type: "hero",
         data: {
-          eyebrow: "Automation, ADAS och testsystem",
-          title: "Teknisk leverans och partnerlosningar for moderna testmiljoer.",
-          body: "ANKA Consulting AB samlar konsultleverans, partnerprodukter och verifieringskompetens i en tydligare webbstruktur med separata sidor for varje amne.",
-          buttonLabel: "Se tjanster",
+          eyebrow: "Engineering services inom ADAS, Euro NCAP och testsystem",
+          title: "Produktutveckling, teknisk problemlosning och verifiering for avancerade fordonsmiljoer.",
+          body: "ANKA Consulting AB stottar kunder fran behov och teknisk utmaning till verifierad losning. Fokus ligger pa ADAS, Euro NCAP-relaterad provning, testautomation, matdata och robusta testmiljoer.",
+          buttonLabel: "Vara tjanster",
           buttonHref: "services.html",
           imageUrl:
             "https://www.abdynamics.com/app/uploads/2024/01/About-AB-Dynamics.jpg",
@@ -31,21 +31,21 @@ export const DEFAULT_PAGES = [
         id: "home-focus",
         type: "cards",
         data: {
-          eyebrow: "Fokus",
-          title: "Det viktigaste, utan utfyllnad.",
-          body: "Startsidan ska snabbt visa vad ANKA gor och sedan leda vidare till ratt sida.",
+          eyebrow: "Erbjudande",
+          title: "Tre tydliga spar i samma leveransmodell.",
+          body: "Vi bygger ett erbjudande som ar latt att forsta for bade teknikchefer, inkop och projektledare.",
           items: [
             {
-              title: "Tjanster",
-              body: "Automation, ADAS, teststrategi, GNSS/INS och verifiering.",
+              title: "Produktutveckling",
+              body: "Utveckling av testnara produkter, verktyg, plattformar och integrationslosningar for moderna engineeringteam.",
             },
             {
-              title: "Partners",
-              body: "AB Dynamics och OXTS for robust testning och matdata.",
+              title: "Problemlosning och expertstod",
+              body: "Teknisk analys, felsokning, systemforstaelse och riktade insatser i komplexa miljoer dar kvalitet och takt ar avgorande.",
             },
             {
-              title: "Uppdrag och kontakt",
-              body: "Publicerade uppdrag samt intake-flode for kandidater och uppdragsgivare.",
+              title: "Test och verifiering",
+              body: "ADAS, Euro NCAP-relevanta floden, HIL, GNSS/INS, automatiserad testning och sparbar datainsamling.",
             },
           ],
         },
@@ -54,10 +54,10 @@ export const DEFAULT_PAGES = [
         id: "home-cta",
         type: "cta",
         data: {
-          eyebrow: "Nasta steg",
-          title: "Ga vidare till ratt arbetsyta.",
-          body: "Tjanster, partners, uppdrag och kontakt ligger nu pa egna sidor. Sidinnehall byggs i admin med block som kan flyttas med drag and drop.",
-          buttonLabel: "Oppna kontakt",
+          eyebrow: "Arbetssatt",
+          title: "Fran tekniskt problem till verifierad leverans.",
+          body: "Vi arbetar nara kundens verkliga utvecklingsmiljo med kombinationen konsultkompetens, partnerlosningar och produktnara engineering. Resultatet ska vara anvandbart i vardagen, inte bara snyggt pa papper.",
+          buttonLabel: "Kontakta oss",
           buttonHref: "contact.html",
         },
       },
@@ -75,8 +75,8 @@ export const DEFAULT_PAGES = [
         type: "hero",
         data: {
           eyebrow: "Tjanster",
-          title: "Teknisk leverans inom automation, ADAS och testsystem.",
-          body: "ANKA Consulting AB fokuserar pa konsultleverans, testmetodik, matsystem och fordonsverifiering i kravande miljoer.",
+          title: "Engineeringtjanster for produktutveckling, verifiering och teknisk problemlosning.",
+          body: "Vara tjanster ar byggda for kunder som utvecklar, verifierar och industrialiserar avancerade system inom fordon, ADAS, automation och intelligenta testmiljoer.",
           buttonLabel: "Kontakta oss",
           buttonHref: "contact.html",
           imageUrl:
@@ -87,21 +87,44 @@ export const DEFAULT_PAGES = [
         id: "services-cards",
         type: "cards",
         data: {
-          eyebrow: "Fokus",
-          title: "Det viktigaste, tydligt paketerat.",
-          body: "Varje sida ska bara visa det som ar relevant for just det amnet.",
+          eyebrow: "Tjansteomraden",
+          title: "Kompetens som kopplar ihop utveckling, test och verklig anvandning.",
+          body: "Vi vill vara tydliga med vad kunder faktiskt kan fa hjalp med.",
           items: [
             {
-              title: "ADAS och validering",
-              body: "Sensorvalidering, scenariobaserad provning och sparbar analys.",
+              title: "Produktutveckling",
+              body: "Utveckling av verktyg, delsystem, testplattformar och tekniska losningar som effektiviserar kundens vardag.",
             },
             {
-              title: "Testautomation",
-              body: "Bygg och stabilisera testkedjor, CI-floden och kvalitetskontroller.",
+              title: "Test och verifiering",
+              body: "ADAS-validering, teststrategi, HIL/SIL, automatiserade floden och kvalitetssakring med sparbara resultat.",
             },
             {
-              title: "GNSS / INS",
-              body: "Precision positioning, matdata och tekniskt stod for avancerad testning.",
+              title: "Teknisk problemlosning",
+              body: "Analys, felsokning, integration och expertstod nar system, testmiljo eller dataflode inte beter sig som de ska.",
+            },
+          ],
+        },
+      },
+      {
+        id: "services-focus",
+        type: "cards",
+        data: {
+          eyebrow: "Sarskilda fokusomraden",
+          title: "Dar ANKA ska vara som starkast.",
+          body: "Innehall och erbjudande ska peka mot de omraden dar bolaget kan bygga verkligt fortroende.",
+          items: [
+            {
+              title: "ADAS och Euro NCAP",
+              body: "Stod kring testupplagg, scenarier, matning, analys och verifieringsfloden for assisterade och aktiva sakerhetssystem.",
+            },
+            {
+              title: "Automation och testmiljoer",
+              body: "Utveckling och stabilisering av testutrustning, testriggar, loggning, regression och exekveringsfloden.",
+            },
+            {
+              title: "Positionering och matdata",
+              body: "GNSS/INS, sensorfusion, datakvalitet och robust sparbarhet for utveckling, provning och validering.",
             },
           ],
         },
@@ -120,22 +143,29 @@ export const DEFAULT_PAGES = [
         type: "text",
         data: {
           eyebrow: "Partners",
-          title: "Losningar fran AB Dynamics och OXTS.",
-          body: "ANKA kan presentera partnerlosningar for sparbar provning, precisionspositionering och effektiv testning i avancerade fordonsmiljoer.",
+          title: "Partnerlosningar som forstarker utveckling, provning och verifiering.",
+          body: "ANKA kombinerar egen engineeringforstaelse med losningar fran AB Dynamics och OXTS for kunder som arbetar med ADAS, testbanor, Euro NCAP-nara verifiering och avancerad matdata.",
         },
       },
       {
         id: "partners-cards",
         type: "cards",
         data: {
+          eyebrow: "Partnerportfolj",
+          title: "Ratt teknik for ratt testutmaning.",
+          body: "Partnerdelen ska visa att ANKA inte bara tillsatter kompetens, utan ocksa kan bygga en starkare testmiljo tillsammans med kunden.",
           items: [
             {
               title: "AB Dynamics",
-              body: "Driving robots, ADAS targets, testplattformar och telemetri for repeterbar fordonsprovning.",
+              body: "Driving robots, ADAS targets, testbanestod och system for repeterbar och kontrollerad fordonsprovning.",
             },
             {
               title: "OXTS",
-              body: "GNSS/INS, lokalisation och robust matdata for ADAS, autonomi och verifiering.",
+              body: "GNSS/INS, positionering, lokalisering och robust matdata for ADAS, autonomi och avancerad verifiering.",
+            },
+            {
+              title: "Integrationsstod",
+              body: "Val av losning, teknisk dialog, systemanpassning och stod kring hur utrustningen passar in i kundens befintliga testflode.",
             },
           ],
         },
@@ -154,8 +184,8 @@ export const DEFAULT_PAGES = [
         type: "text",
         data: {
           eyebrow: "Uppdrag",
-          title: "Publicerade uppdrag",
-          body: "Har visas bara uppdrag som ar publicerade via adminportalen.",
+          title: "Aktuella uppdrag och engineeringbehov.",
+          body: "Har visas bara uppdrag som ar publicerade via adminportalen. Inga platshallarjobb och inga generiska annonser.",
         },
       },
       {
@@ -177,8 +207,8 @@ export const DEFAULT_PAGES = [
         type: "text",
         data: {
           eyebrow: "Kontakt",
-          title: "Skicka in underlag eller uppdragsforfragan.",
-          body: "Pa den har sidan kan bade uppdragstagare och uppdragsgivare skicka in sin information.",
+          title: "Skicka in underlag, uppdragsforfragan eller dialog om samarbete.",
+          body: "Pa den har sidan kan bade uppdragstagare och uppdragsgivare skicka in sin information till ANKA. Formular och bilagor sparas i admin och skickas vidare som mejlnotis.",
         },
       },
       {

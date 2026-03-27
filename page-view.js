@@ -51,7 +51,7 @@ const renderTextBlock = (block) => {
   }
 
   if (block.data.title) {
-    const title = document.createElement("h1");
+    const title = document.createElement("h2");
     title.textContent = block.data.title;
     section.appendChild(title);
   }

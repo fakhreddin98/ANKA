@@ -11,6 +11,7 @@ const pageList = document.querySelector("#page-list");
 const blockList = document.querySelector("#block-list");
 const savePageButton = document.querySelector("#save-page-button");
 const addBlockButton = document.querySelector("#add-block-button");
+const resetPageButton = document.querySelector("#reset-page-button");
 const newBlockType = document.querySelector("#new-block-type");
 const status = document.querySelector("#page-builder-status");
 const editorPageTitle = document.querySelector("#editor-page-title");
@@ -276,6 +277,21 @@ if (!hasSupabaseConfig) {
 
   savePageButton.addEventListener("click", async () => {
     await saveCurrentPage();
+  });
+
+  resetPageButton.addEventListener("click", () => {
+    if (!currentPage) {
+      return;
+    }
+
+    const defaultPage = findDefaultPage(currentPage.slug);
+    if (!defaultPage) {
+      return;
+    }
+
+    currentPage = clonePage(defaultPage);
+    renderEditor();
+    setStatus("Standardsidan ar inlast. Spara for att skriva over databasen.", "loading");
   });
 
   [pageTitleInput, pageNavInput, pageMetaDescription, pagePublished].forEach((input) => {
