@@ -32,9 +32,10 @@ Adminportalen finns i [admin.html](c:/Users/fakhreddinka/OneDrive%20-%20RISE/Des
 Funktioner i den h&auml;r versionen:
 
 - logga in som administrat&ouml;r
-- redigera webbplatsens texter, l&auml;nkar, bilder och sektionssynlighet
-- skapa, uppdatera, publicera och ta bort uppdrag
-- se inkomna formul&auml;r
+- g&aring; vidare till separata adminvyer f&ouml;r sidredigering, uppdrag och formul&auml;r
+- redigera publika sidor blockvis med drag and drop i [admin-pages.html](c:/Users/fakhreddinka/OneDrive%20-%20RISE/Desktop/Skripter/webbsida/admin-pages.html)
+- skapa, uppdatera, publicera och ta bort uppdrag i [admin-jobs.html](c:/Users/fakhreddinka/OneDrive%20-%20RISE/Desktop/Skripter/webbsida/admin-jobs.html)
+- se inkomna formul&auml;r i [admin-inquiries.html](c:/Users/fakhreddinka/OneDrive%20-%20RISE/Desktop/Skripter/webbsida/admin-inquiries.html)
 - markera formul&auml;r som `Ny`, `Kontaktad` eller `Stangd`
 - &ouml;ppna uppladdade bilagor via signerad l&auml;nk
 
@@ -52,13 +53,27 @@ Om du senare vill ta bort beroendet till FormSubmit kan vi ers&auml;tta mejlnoti
 
 Fr&aring;n adminportalen kan du nu:
 
-- &auml;ndra hero-text, knappar och bilder
-- &auml;ndra brandtitel, footertexter och enklare designf&auml;rger
-- &auml;ndra partnertexter f&ouml;r AB Dynamics och OXTS
-- &auml;ndra erbjudande-korten
-- styra texten i uppdragssektionen
-- styra texten i kontaktsektionen
-- visa eller d&ouml;lja `Partners`, `Uppdrag` och `Kontakt`
-- &auml;ndra ordningen mellan `Partners`, `Uppdrag` och `Kontakt`
+- redigera startsida, tj&auml;nster, partners, uppdrag och kontakt som separata sidor
+- l&auml;gga till, ta bort och flytta block med drag and drop per sida
+- uppdatera sidtitel, navigationstext och meta-beskrivning per sida
+- styra publicering per sida
 
-Det som den inte styr fullt ut &auml;nnu &auml;r fri layoutredigering av CSS och pixelperfekt design. Det g&aring;r att bygga senare, men nuvarande l&ouml;sning &auml;r ett riktigt inneh&aring;lls-CMS, inte en full sidbyggare.
+Det som den inte styr fullt ut &auml;nnu &auml;r fri pixelplacering som i ett fullst&auml;ndigt designverktyg. Drag and drop g&auml;ller i den h&auml;r versionen blockordning och blockinneh&aring;ll per sida.
+
+## 8. Flersidig struktur
+
+Nya publika sidor finns nu som:
+
+- [index.html](c:/Users/fakhreddinka/OneDrive%20-%20RISE/Desktop/Skripter/webbsida/index.html)
+- [services.html](c:/Users/fakhreddinka/OneDrive%20-%20RISE/Desktop/Skripter/webbsida/services.html)
+- [partners.html](c:/Users/fakhreddinka/OneDrive%20-%20RISE/Desktop/Skripter/webbsida/partners.html)
+- [jobs.html](c:/Users/fakhreddinka/OneDrive%20-%20RISE/Desktop/Skripter/webbsida/jobs.html)
+- [contact.html](c:/Users/fakhreddinka/OneDrive%20-%20RISE/Desktop/Skripter/webbsida/contact.html)
+
+Ny sidredigering finns i:
+
+- [admin-pages.html](c:/Users/fakhreddinka/OneDrive%20-%20RISE/Desktop/Skripter/webbsida/admin-pages.html)
+- [admin-jobs.html](c:/Users/fakhreddinka/OneDrive%20-%20RISE/Desktop/Skripter/webbsida/admin-jobs.html)
+- [admin-inquiries.html](c:/Users/fakhreddinka/OneDrive%20-%20RISE/Desktop/Skripter/webbsida/admin-inquiries.html)
+
+Efter den h&auml;r &auml;ndringen beh&ouml;ver den uppdaterade SQL-filen k&ouml;ras igen i Supabase, eftersom tabellen `site_pages` har lagts till. Efter det beh&ouml;ver sidan deployas om.

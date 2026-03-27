@@ -58,6 +58,17 @@ create table if not exists public.site_content (
   updated_at timestamptz not null default timezone('utc', now())
 );
 
+create table if not exists public.site_pages (
+  slug text primary key,
+  title text not null,
+  nav_label text not null,
+  meta_description text,
+  published boolean not null default true,
+  blocks jsonb not null default '[]'::jsonb,
+  created_at timestamptz not null default timezone('utc', now()),
+  updated_at timestamptz not null default timezone('utc', now())
+);
+
 drop trigger if exists jobs_set_updated_at on public.jobs;
 create trigger jobs_set_updated_at
 before update on public.jobs
@@ -73,6 +84,7 @@ execute function public.set_updated_at();
 alter table public.jobs enable row level security;
 alter table public.inquiries enable row level security;
 alter table public.site_content enable row level security;
+alter table public.site_pages enable row level security;
 
 drop policy if exists "Public can read published jobs" on public.jobs;
 create policy "Public can read published jobs"
@@ -121,6 +133,19 @@ using (true);
 drop policy if exists "Admin full access to site content" on public.site_content;
 create policy "Admin full access to site content"
 on public.site_content
+for all
+using (public.is_admin())
+with check (public.is_admin());
+
+drop policy if exists "Public can read site pages" on public.site_pages;
+create policy "Public can read site pages"
+on public.site_pages
+for select
+using (published = true);
+
+drop policy if exists "Admin full access to site pages" on public.site_pages;
+create policy "Admin full access to site pages"
+on public.site_pages
 for all
 using (public.is_admin())
 with check (public.is_admin());

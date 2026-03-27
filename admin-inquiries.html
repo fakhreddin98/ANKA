@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="sv">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ANKA | Formular Admin</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Space+Grotesk:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="admin.css" />
+    <script src="config.js"></script>
+    <script type="module" src="admin-inquiries.js"></script>
+  </head>
+  <body class="admin-body">
+    <div class="page-glow page-glow-left"></div>
+    <div class="page-glow page-glow-right"></div>
+    <div class="site-shell admin-shell">
+      <header class="topbar admin-topbar">
+        <a class="brand" href="admin.html">
+          <span class="brand-mark">A</span>
+          <span class="brand-text"><strong>ANKA</strong><span>Formular</span></span>
+        </a>
+        <div class="admin-topbar-actions">
+          <a class="button button-ghost" href="admin.html">Oversikt</a>
+          <a class="button button-ghost" href="admin-pages.html">Sidredigering</a>
+          <a class="button button-ghost" href="admin-jobs.html">Uppdrag</a>
+          <button class="button button-ghost" id="logout-button" type="button">Logga ut</button>
+        </div>
+      </header>
+      <main class="admin-main">
+        <section class="admin-panel">
+          <div class="admin-section-heading">
+            <div>
+              <p class="eyebrow">Inkomna formular</p>
+              <h1>Kandidater och uppdragsgivare</h1>
+            </div>
+          </div>
+          <div class="admin-list inquiries-list" id="inquiries-admin-list"></div>
+        </section>
+      </main>
+    </div>
+  </body>
+</html>
