@@ -55,25 +55,25 @@ export const DEFAULT_PAGES = [
         type: "cards",
         data: {
           variant: "logos",
-          eyebrow: "Natverk och referensmiljoer",
-          title: "Bolag och miljoer ANKA vill kunna arbeta nara.",
-          body: "Logovaggen visar den typ av aktorer, testmiljoer och tekniknara sammanhang som sidan ska tala till.",
+          eyebrow: "Partners och samarbetsytor",
+          title: "Aktorer vi arbetar eller har arbetat med.",
+          body: "Sektionen ska tydligt visa de partners, testmiljoer och organisationer som ANKA har verklig koppling till genom samarbete, uppdrag eller teknisk dialog.",
           items: [
             {
               title: "AB Dynamics",
-              body: "Driving robots, ADAS targets och testplattformar.",
+              body: "Partner inom testplattformar, driving robots och ADAS-provning.",
               href: "https://www.abdynamics.com/",
               imageUrl: "AB_Dynamics.png",
             },
             {
               title: "OXTS",
-              body: "GNSS/INS, lokalisation och precisionsmatning.",
+              body: "Partner inom GNSS/INS, lokalisation och precisionsmatning.",
               href: "https://www.oxts.com/",
               imageUrl: "OxTS-Master-Full-Colour-Black-1-footer-400x144-c-default.webp",
             },
             {
               title: "RISE",
-              body: "Forskningsnara test- och innovationsmiljoer.",
+              body: "Forsknings- och innovationspartner med stark koppling till test och verifiering.",
               href: "https://www.ri.se/",
               imageUrl: "RISE.png",
             },
@@ -82,6 +82,12 @@ export const DEFAULT_PAGES = [
               body: "Testmiljo for aktiv sakerhet, ADAS och automatiserade fordon.",
               href: "https://www.astazero.com/",
               imageUrl: "AZ-LOGO_POS.png",
+            },
+            {
+              title: "Euro NCAP",
+              body: "Referensyta for sakerhetskrav, provningsscenarier och ADAS-relevanta testfloden.",
+              href: "https://www.euroncap.com/",
+              imageUrl: "Euro_NCAP_Logo_Black_da89494d0e.png",
             },
             {
               title: "Hogskolan i Boras",
@@ -191,8 +197,8 @@ export const DEFAULT_PAGES = [
         type: "text",
         data: {
           eyebrow: "Partners",
-          title: "Partnerlosningar som forstarker utveckling, provning och verifiering.",
-          body: "ANKA kombinerar egen engineeringforstaelse med losningar fran AB Dynamics och OXTS for kunder som arbetar med ADAS, testbanor, Euro NCAP-nara verifiering och avancerad matdata.",
+          title: "Partners, organisationer och miljoer vi arbetar eller har arbetat med.",
+          body: "ANKA verkar i ett sammanhang dar teknikleverantorer, testanlaggningar, akademi och sakerhetsorganisationer spelar stor roll. Den har sidan ska visa verkliga partnerrelationer och relevanta samarbetsytor.",
         },
       },
       {
@@ -223,9 +229,9 @@ export const DEFAULT_PAGES = [
         type: "cards",
         data: {
           variant: "logos",
-          eyebrow: "Aktorer och miljoer",
-          title: "Relevanta namn i samma tekniska ekosystem.",
-          body: "Ut over partnerlosningar kan sidan ocksa visa var ANKA ror sig: forskning, testanlaggningar, konsultnatverk och engineeringbolag.",
+          eyebrow: "Partners och samarbete",
+          title: "Logotyper for partners och organisationer med verklig koppling till ANKA.",
+          body: "Det har ar inte en inspirationslista, utan bolag och miljoer som ANKA arbetar eller har arbetat med inom test, ADAS, utveckling och verifiering.",
           items: [
             {
               title: "AB Dynamics",
@@ -250,6 +256,12 @@ export const DEFAULT_PAGES = [
               body: "Provning inom aktiv sakerhet och automatiserade fordon.",
               href: "https://www.astazero.com/",
               imageUrl: "AZ-LOGO_POS.png",
+            },
+            {
+              title: "Euro NCAP",
+              body: "Sakerhetsorganisation med tydlig koppling till ADAS- och verifieringsarbete.",
+              href: "https://www.euroncap.com/",
+              imageUrl: "Euro_NCAP_Logo_Black_da89494d0e.png",
             },
             {
               title: "Hogskolan i Boras",
